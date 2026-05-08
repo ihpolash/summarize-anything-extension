@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Summarize Anything",
+  "description": "Summarize and ask questions about the current page using OpenRouter.",
+  "version": "1.0.0",
+  "permissions": ["activeTab", "scripting", "storage", "tabs", "sidePanel"],
+  "host_permissions": ["https://openrouter.ai/*"],
+  "icons": {
+    "16": "logo.png",
+    "32": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Summarize Anything",
+    "default_icon": {
+      "16": "logo.png",
+      "32": "logo.png",
+      "48": "logo.png",
+      "128": "logo.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "src/sidepanel.html"
+  }
+}

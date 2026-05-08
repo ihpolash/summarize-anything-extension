@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summarize Anything — Settings</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app options-page">
+    <div id="toastContainer" class="toast-container"></div>
+
+    <div class="options-card">
+      <div class="options-header">
+        <h1>⚡ OpenRouter Settings</h1>
+        <p>Configure your API key to start summarizing</p>
+      </div>
+
+      <div class="onboarding-steps">
+        <div class="settings-label">How to get your API key</div>
+        <ol>
+          <li>Go to <a href="https://openrouter.ai/keys" target="_blank" rel="noreferrer">openrouter.ai/keys</a></li>
+          <li>Sign in and create a new key</li>
+          <li>Copy the key and paste it below</li>
+          <li>Click <strong>Save Key</strong></li>
+        </ol>
+      </div>
+
+      <div class="form-group">
+        <label for="apiKeyInput">OpenRouter API Key</label>
+        <input
+          id="apiKeyInput"
+          class="input-field"
+          type="password"
+          placeholder="sk-or-v1-..."
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="btn-row">
+        <button id="saveButton" class="btn btn-primary" style="flex: 1;">Save Key</button>
+        <button id="clearButton" class="btn btn-secondary">Clear</button>
+      </div>
+
+      <p id="status" aria-live="polite" style="display: none;"></p>
+
+      <p class="storage-note">🔒 Stored in chrome.storage.sync — local to this Chrome profile</p>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>

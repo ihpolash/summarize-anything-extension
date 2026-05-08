@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summarize Anything</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app app-popup">
+    <div id="toastContainer" class="toast-container"></div>
+
+    <header class="app-header">
+      <img src="../logo.png" alt="logo" class="header-logo" />
+      <h1>Summarize Anything</h1>
+      <button id="settingsToggle" class="icon-button" title="Settings" aria-expanded="false">⚙</button>
+    </header>
+
+    <div id="settingsDrawer" class="settings-drawer">
+      <div class="settings-drawer-inner">
+        <div>
+          <div class="settings-label">OpenRouter API Key</div>
+          <input
+            id="apiKeyInput"
+            class="input-field"
+            type="password"
+            placeholder="sk-or-v1-..."
+            autocomplete="off"
+          />
+          <div style="margin-top: 8px;">
+            <button id="saveKeyButton" class="btn btn-primary btn-full">Save Key</button>
+          </div>
+        </div>
+        <div>
+          <div class="settings-label">Model</div>
+          <div id="modelChips" class="model-chips"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-actions">
+      <button id="summarizeButton" class="btn btn-primary btn-full">🔍 Summarize Page</button>
+      <button id="openSidePanelButton" class="btn btn-secondary btn-full">↗ Open Side Panel</button>
+    </div>
+
+    <div class="popup-quick-ask">
+      <div class="quick-ask-row">
+        <textarea
+          id="questionInput"
+          class="input-field"
+          rows="2"
+          placeholder="Ask anything about this page…"
+        ></textarea>
+        <button id="askButton" class="btn btn-primary">→</button>
+      </div>
+    </div>
+
+    <div id="resultWrapper" class="popup-result" hidden>
+      <div id="result"></div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

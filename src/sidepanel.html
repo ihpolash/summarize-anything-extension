@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summarize Anything</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app app-panel">
+    <div id="toastContainer" class="toast-container"></div>
+
+    <header class="app-header">
+      <img src="../logo.png" alt="logo" class="header-logo" />
+      <h1>Page Assistant</h1>
+      <button id="newChatButton" class="icon-button" title="New chat">＋</button>
+      <button id="settingsToggle" class="icon-button" title="Settings" aria-expanded="false">⚙</button>
+    </header>
+
+    <div id="settingsDrawer" class="settings-drawer">
+      <div class="settings-drawer-inner">
+        <div>
+          <div class="settings-label">OpenRouter API Key</div>
+          <input
+            id="apiKeyInput"
+            class="input-field"
+            type="password"
+            placeholder="sk-or-v1-..."
+            autocomplete="off"
+          />
+          <div style="margin-top: 8px;">
+            <button id="saveKeyButton" class="btn btn-primary btn-full">Save Key</button>
+          </div>
+        </div>
+        <div>
+          <div class="settings-label">Model</div>
+          <div id="modelChips" class="model-chips"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="messagesArea" class="messages-area">
+      <div id="emptyState" class="empty-state">
+        <span class="empty-icon">✦</span>
+        <p>Summarize the page or ask a question to get started</p>
+      </div>
+    </div>
+
+    <div class="panel-input-bar">
+      <div class="input-row">
+        <textarea
+          id="questionInput"
+          class="input-field"
+          rows="1"
+          placeholder="Ask anything about this page…"
+        ></textarea>
+        <button id="askButton" class="btn btn-primary">→</button>
+      </div>
+      <div class="panel-toolbar">
+        <button id="summarizeButton" class="btn btn-secondary">🔍 Summarize</button>
+        <button id="clearChatButton" class="btn btn-secondary">🗑 Clear</button>
+      </div>
+    </div>
+
+    <script src="sidepanel.js"></script>
+  </body>
+</html>
