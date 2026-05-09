@@ -146,6 +146,35 @@ function setStorageValue(key, value) {
   });
 }
 
+async function ensureCurrentSitePermission() {
+  const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+  const activeTab = tabs[0];
+  if (!activeTab?.url) {
+    throw new Error("Could not determine active tab URL.");
+  }
+
+  const parsedUrl = new URL(activeTab.url);
+  if (parsedUrl.protocol !== "http:" && parsedUrl.protocol !== "https:") {
+    throw new Error("This page type is not supported for content extraction.");
+  }
+
+  const originPattern = `${parsedUrl.protocol}//${parsedUrl.host}/*`;
+  const hasPermission = await chrome.permissions.contains({
+    origins: [originPattern],
+  });
+
+  if (hasPermission) {
+    return;
+  }
+
+  const granted = await chrome.permissions.request({
+    origins: [originPattern],
+  });
+  if (!granted) {
+    throw new Error("Site access permission is required to summarize this page.");
+  }
+}
+
 // ─── Model Chips ─────────────────────────────────────────
 
 function buildModelChips(selectedModel) {
@@ -217,6 +246,7 @@ async function runAction(type) {
     </div>`;
 
   try {
+    await ensureCurrentSitePermission();
     const response = await chrome.runtime.sendMessage({ type, question, model });
     if (!response?.ok) throw new Error(response?.error || "Request failed.");
 
